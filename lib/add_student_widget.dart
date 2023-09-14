@@ -56,6 +56,6 @@ class AddStudentWidget extends StatelessWidget {
 
     var studentModel = StudentModel(name: _name, age: _age);
     
-    addStudent(studentModel);
+     addStudent(studentModel);
   }
 }

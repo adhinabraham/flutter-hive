@@ -8,4 +8,11 @@ class StudentModel {
 
   @HiveField(1)
   final String age;
+
+   static StudentModel mapEachModal(Map<String, Object?> map){
+     final name = map["name"] as String;
+     final age  = map["age"] as String;
+        StudentModel student = StudentModel(name: name, age:  age);
+        return student;
+  }
 }

@@ -17,6 +17,9 @@ class ListStudentWidget extends StatelessWidget {
             minVerticalPadding: 20,
             title: Text(" ${data.name} "),
             subtitle: Text("${data.age}"),
+            trailing: TextButton.icon(onPressed: (){
+              deleteStudent(data);
+            }, icon:Icon(Icons.delete), label: Text("delete")),
           );
         }, separatorBuilder: (context, index) {
           return const Divider();

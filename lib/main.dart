@@ -8,10 +8,17 @@ import 'list_student_widget.dart';
 
 Future<void>  main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  if(!Hive.isAdapterRegistered(StudentModelAdapter().typeId)) {
-    Hive.registerAdapter(StudentModelAdapter());
-  }
+  // await Hive.initFlutter();
+  // if(!Hive.isAdapterRegistered(StudentModelAdapter().typeId)) {
+  //   Hive.registerAdapter(StudentModelAdapter());
+  // }
+  print("app is running -------->");
+   await initalDataBase().then((value) =>
+      print("not getting errror "),
+  ).catchError((error)=>{
+    print("gettting error in the catch "),
+    print("$error")
+  });
   runApp(const MyApp());
 }
 
@@ -21,6 +28,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    print("flutter is running-------------> ");
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
@@ -34,9 +42,7 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -44,7 +50,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    getAllStudent();
+     getAllStudents();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
